@@ -1,0 +1,68 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  _id: ID!
+  email: String!
+  name: String!
+  password: String!
+  ciudadId: String!
+  roleId: String!
+  estado: Boolean!
+}
+
+type SolicitudBaja {
+  _id: ID!
+  name: String!
+  documento_id: String!
+  proceso_id: String!
+  estado: Boolean!
+}
+
+type ProcesoDeterminado {
+  id: ID!
+  name: String!
+  proceso_id: String!
+  flujo_proceso_id: String!
+  estado: Boolean!
+}
+
+type Query {
+  users: [User!]!
+  solicitudbajas: [SolicitudBaja!]!
+  procesosDeterminados: [ProcesoDeterminado!]!
+}
+
+type Mutation {
+  create(createSolicitudBajaInput: CreateSolicitudBajaInput!): SolicitudBaja!
+  softDeleteUser(id: String!): Boolean!
+  softDeleteSolicitudBaja(id: String!): Boolean!
+  createProcesoDeterminado(createProcesoDeterminadoInput: CreateProcesoDeterminadoInput!): ProcesoDeterminado!
+  softDeleteProcesoDeterminado(id: String!): Boolean!
+}
+
+input CreateSolicitudBajaInput {
+  """Nombre de solicitud"""
+  name: String!
+
+  """ID del documento asignado a la solicitud"""
+  documento_id: String!
+
+  """ID del proceso asignado a la solicitud"""
+  proceso_id: String!
+
+  """Estado el flujo del proceso"""
+  estado: Boolean!
+}
+
+input CreateProcesoDeterminadoInput {
+  """Nombre del proceso determinado"""
+  name: String!
+
+  """ID del proceso"""
+  proceso_id: String!
+
+  """ID del flujo del proceso"""
+  flujo_proceso_id: String!
+}
